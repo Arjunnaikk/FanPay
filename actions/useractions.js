@@ -7,7 +7,7 @@ import connectDb from "@/db/connectDb"
 
 export const initiate =async(amount, to_username, paymentform) => {
     await connectDb()
-    var instance = new Razorpay({ key_id: process.env.KEY_ID, key_secret: process.env.KEY_SECRET })
+    var instance = new Razorpay({ key_id: process.env.NEXT_PUBLIC_KEY_ID, key_secret: process.env.KEY_SECRET })
 
 instance.orders.create({
 amount: 50000,
