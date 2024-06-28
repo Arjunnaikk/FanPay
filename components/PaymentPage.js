@@ -1,11 +1,26 @@
 "use client"
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Script from 'next/script'
 import { initiate } from '@/actions/useractions'
-import { useSession } from 'next-auth/react'
+import { fetchuser, fetchpayments } from '@/actions/useractions'
+
 
 const PaymentPage = ({username}) => {
     const [paymentform, setPaymentform] = useState({ name: '', message: ''})
+    const [currentuser, setCurrentuser] = useState({})
+    const [payments, setPayments] = useState([])
+
+    const getData = async (params) => {
+      let u = await fetchuser(username)
+      setCurrentuser(u)
+      let dbPayments = await fetchpayments(username)
+      setPayments(dbPayments)
+    }
+    useEffect(() => {
+      getData()
+    }, [])
+    
+
     const handleChange = (e)=>{
         setPaymentform({...paymentform, [e.target.name]: e.target.value})
         console.log(paymentform.amount)
@@ -62,24 +77,16 @@ var rzp1 = new Razorpay(options);
       <div className="payment flex justify-around gap-2 w-[98vw] h-[80vh]">
         <div className="supporter w-[45%] text-white bg-slate-800 h-[50vh] rounded-[15px] p-5">
           <h2 className='font-bold text-lg '>Supporter</h2>
+          <div className='h-[90%] overflow-y-auto'>
           <ul>
-            <li className='text-lg p-1 flex items-center gap-1'>
+            {payments.map((p,i) => {
+            return <li key={i} className='text-lg p-1 flex items-center gap-1'>
             <img width={35} className="invert mix-blend-screen" src="/images/profile.gif" alt="" />
-              Arjun Donated $70 with a message
+              {p.name} Donated ₹{p.amount} with a message {p.message}
               </li>
-            <li className='text-lg p-1 flex items-center gap-1'>
-            <img width={35} className="invert mix-blend-screen" src="/images/profile.gif" alt="" />
-              Arjun Donated $70 with a message
-              </li>
-            <li className='text-lg p-1 flex items-center gap-1'>
-            <img width={35} className="invert mix-blend-screen" src="/images/profile.gif" alt="" />
-              Arjun Donated $70 with a message
-              </li>
-            <li className='text-lg p-1 flex items-center gap-1'>
-            <img width={35} className="invert mix-blend-screen" src="/images/profile.gif" alt="" />
-              Arjun Donated $70 with a message
-              </li>
+              })}
           </ul>
+          </div>
         </div>
         <div className="makepayment w-[45%] text-white bg-slate-800 h-[50vh] rounded-[15px] p-5">
           <h2 className='font-bold text-lg'>Make a payment</h2>
