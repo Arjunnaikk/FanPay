@@ -40,7 +40,7 @@ export const authoptions = NextAuth({
       if(account.provider == 'github') {
         await connectDb()
         //check if the user exist in db
-        const currentUser = await User.findOne({email: email})
+        const currentUser = await User.findOne({email: user.email})
         if(!currentUser){
           //Create a nexone
           const newUser = await User.create({
