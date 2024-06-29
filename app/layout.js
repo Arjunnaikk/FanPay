@@ -7,7 +7,7 @@ import SessionWrapper from "@/components/SessionWrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "GalaxyFund - Fund your project with galaxy",
+  title: "FanPay - Fund your project with galaxy",
   description: "This is a crowdfunding platform for creators.",
 };
 
