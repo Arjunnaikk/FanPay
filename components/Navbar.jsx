@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className='bg-[#171625] text-white flex justify-between px-5 h-12 items-center'>
+    <nav className='bg-[#171625] text-white flex justify-between px-5 h-12 sticky top-0 z-50 items-center'>
         <Link href="/" ><div className="logo font-bold text-lg flex justify-center items-center">Galaxy <img width={45} className="invert mix-blend-screen" src="/images/nebula.gif" alt="" /></div></Link>
         {/* <ul className='flex gap-10'>
             <li>Home</li>
@@ -21,11 +21,9 @@ const Navbar = () => {
         <div className='relative'> {session && <>
 <button onClick={() => {setShowdropdown(!showdropdown)}} onBlur={() => {setTimeout(() => {
   setShowdropdown(false)
-}, 500);}} id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">{session.user.email}<svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-<path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-</svg>
+}, 500);}} id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 appearance-none focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center dark:bg-purple-900 dark:hover:bg-purple-800 dark:focus:ring-blue-800" type="button"><img width={20} height={10} src="/images/menu.png" alt="" />
 </button>
-<div id="dropdownDivider" className={`z-10 ${showdropdown?"":"hidden"}  absolute top-[45px] left-[2.8px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
+<div id="dropdownDivider" className={`z-10 ${showdropdown?"":"hidden"}  absolute top-[45px] right-[0px] bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
       <li>
         <Link href="/dashboard" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</Link>
@@ -34,7 +32,7 @@ const Navbar = () => {
         <Link href={`/${session.user.name}`} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Your Page</Link>
       </li>
       <li>
-        <Link href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</Link>
+        <Link href="/earning" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</Link>
       </li>
     </ul>
     <div className="py-2">
