@@ -24,7 +24,7 @@ const PaymentPage = ({ username }) => {
   }
   useEffect(() => {
     getData()
-  }, [])
+  }, [getData])
   useEffect(() => {
     if(searchParams.get("paymentdone")=="true"){
     toast.success('Donated a Galaxy!!', {
@@ -119,7 +119,7 @@ const PaymentPage = ({ username }) => {
                 {payments.map((p, i) => {
                   return <li key={i} className='text-lg p-1 flex items-center gap-1'>
                     <img width={35} className="invert mix-blend-screen" src="/images/profile.gif" alt="" />
-                    {p.name} Donated ₹{p.amount} with a message "{p.message}"
+                    {p.name} Donated ₹{p.amount} with a message &quot;{p.message}&quot;
                   </li>
                 })}
               </ul>

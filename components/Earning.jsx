@@ -44,7 +44,7 @@ const Earning = () => {
                 {payments.map((paym, i) => {
                   return <><li key={i} className='box text-lg p-1 flex items-center h-20 gap-1'>
                     <img width={35} className="invert mix-blend-screen" src="/images/profile.gif" alt="" />
-                    <div className='container flex justify-between'><div>{paym.name} Donated ₹{paym.amount} with a message "{paym.message}" at</div><div><p className='font-sans text-white text-xs px-3'>{formatDate(paym.createdAt)}</p></div></div>
+                    <div className='container flex justify-between'> <div>{paym.name} Donated ₹{paym.amount} with a message &quot;{paym.message}&quot; at</div><div><p className='font-sans text-white text-xs px-3'>{formatDate(paym.createdAt)}</p></div></div>
                     
                   </li><div className='bg-slate-600 w-[100%] h-1'></div></>
                 })}
